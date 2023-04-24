@@ -6,18 +6,14 @@ def csv_to_markdown_table(csv_file_path):
         reader = csv.reader(file)
         header = next(reader)
 
-        # Create the table header
         table_header = "| " + " | ".join(header) + " |\n"
 
-        # Create the separator row
         separator_row = "| " + " | ".join(["---" for _ in header]) + " |\n"
 
-        # Create the table body
         table_body = ""
         for row in reader:
             table_body += "| " + " | ".join(row) + " |\n"
 
-        # Combine the header, separator, and body to create the final table
         markdown_table = table_header + separator_row + table_body
 
         return markdown_table
