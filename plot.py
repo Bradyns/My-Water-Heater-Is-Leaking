@@ -5,7 +5,7 @@ from datetime import datetime
 
 data = pd.read_csv("data.csv")
 
-data["Time (diff)"] = (pd.to_datetime(data["Time (t_final)"], format="%H%M") - pd.to_datetime(data["Time (t_0)"], format="%H%M")).dt.seconds / 3600
+data["Time (diff)"] = (pd.to_datetime(data["Time (t_final)"], format="%H:%M") - pd.to_datetime(data["Time (t_0)"], format="%H:%M")).dt.seconds / 3600
 data["mL/h"] = data["Measurement (mL)"] / data["Time (diff)"]
 
 data["Average (mL/h)"] = data["mL/h"].expanding().mean()
