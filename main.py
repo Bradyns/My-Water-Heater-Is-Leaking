@@ -1,7 +1,8 @@
 import subprocess
+import sys
 
 def run_script(script_path):
-    result = subprocess.run(['python', script_path], check=True)
+    result = subprocess.run([sys.executable, script_path], check=True)
     return result.returncode == 0
 
 if __name__ == "__main__":
