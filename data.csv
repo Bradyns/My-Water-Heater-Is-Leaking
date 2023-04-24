@@ -1,0 +1,5 @@
+Number,Date,Time (t_0),Time (t_final),Time (diff),Measurement (mL),mL/h,Average (mL/h),mL/day,Average (mL/day),Average (Average (mL/h) over 24 hours)
+1,2023-04-24,1439,1639,,220,,,,,
+2,2023-04-24,1645,1845,,360,,,,,
+3,2023-04-24,1851,2051,,390,,,,,
+4,2023-04-24,2052,2252,,210,,,,,

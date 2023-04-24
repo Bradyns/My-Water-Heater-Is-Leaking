@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+# Read the CSV file
+data = pd.read_csv("data.csv")
+
+# Calculate the time difference, mL/h, and mL/day
+data["Time (diff)"] = (pd.to_datetime(data["Time (t_final)"], format="%H%M") - pd.to_datetime(data["Time (t_0)"], format="%H%M")).dt.seconds / 3600
+data["mL/h"] = data["Measurement (mL)"] / data["Time (diff)"]
+data["mL/day"] = data["mL/h"] * 24
+
+# Calculate the average for each new measurement
+data["Average (mL/day)"] = data["mL/day"].expanding().mean()
+
+# Write the results to a new CSV file
+data.to_csv("results.csv", index=False)
+
+# Create a line plot
+plt.plot(data["Number"], data["Measurement (mL)"], marker="o")
+plt.xlabel("Measurement Number")
+plt.ylabel("Measurement (mL)")
+plt.title("Change Over Time for Each New Measurement")
+plt.grid()
+
+# Save the plot as a PNG file
+plt.savefig("line_plot.png")
+plt.show()
